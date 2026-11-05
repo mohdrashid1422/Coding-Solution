@@ -33,24 +33,39 @@ Explanation: 1 has only one divisor (1 itself), which is not sufficient for it t
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-05T11:15:16.364Z  
+**Submitted:** 2026-11-05T11:34:22.104Z  
 
 ```java
 class Solution {
     static boolean isPrime(int n) {
         // code here
+        // if(n <= 1){
+        //     return false;
+        // } 
+        // if(n == 2){
+        //     return true;
+        // }
+        // for(int i=2; i<=Math.sqrt(n); i++){
+        //     if(n%i == 0){
+        //         return false;
+        //     }
+        // }
+        // return true;
+        
+        
         if(n <= 1){
             return false;
-        } 
-        if(n == 2){
+        }
+        return prime(2, n);
+    }
+    public static boolean prime(int i, int n){
+        if(i > Math.sqrt(n)){
             return true;
         }
-        for(int i=2; i<=Math.sqrt(n); i++){
-            if(n%i == 0){
-                return false;
-            }
+        if(n%i == 0){
+            return false;
         }
-        return true;
+        return prime(i+1, n);
     }
     
 }
